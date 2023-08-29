@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Geting From Backend</h1>
+
+    <ul id="Ul">
+
+    </ul>
+
+
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(json => dysplay(json))
+
+        function dysplay(json) {
+            console.log("users :", json);
+
+            const userNAmes = json.map(user => user.username)
+            const ul = document.getElementById("Ul");
+
+            for (let i = 0; i < userNAmes.length; i++) {
+                const name = userNAmes[i];
+
+                const li = document.createElement("li");
+                li.innerText = name;
+
+                ul.appendChild(li);
+            }
+        }
+    </script>
+</body>
+
+</html>
